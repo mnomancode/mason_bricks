@@ -1,3 +1,7 @@
+# 0.1.0+2
+
+- Update documentation.
+
 # 0.1.0+1
 
-- TODO: Describe initial release.
+- Create initial riverpod freezed state Brick.
