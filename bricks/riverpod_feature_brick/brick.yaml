@@ -5,6 +5,7 @@ description: A brick to create a riverpod feature.
 # A version number is three numbers separated by dots, like 1.2.34
 # followed by an optional build number (separated by a +).
 version: 0.1.0+1
+repository: https://github.com/viralkachhadiya/mason_bricks/tree/main/bricks/riverpod_feature_brick
 
 # The following defines the environment for the current brick.
 # It includes the version of mason that the brick requires.
