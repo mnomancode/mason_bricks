@@ -1,3 +1,5 @@
 bricks:
   riverpod_freezed_state:
     path: bricks/riverpod_freezed_state
+  riverpod_feature_brick:
+    path: bricks/riverpod_feature_brick

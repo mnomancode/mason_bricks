@@ -7,7 +7,7 @@ This brick supports custom types and custom lists!
 ## How to use 🚀
 
 ```
-mason make model --state_name authentication --state_type User
+mason make riverpod_freezed_state --state_name authentication --state_type User
 ```
 
 ```

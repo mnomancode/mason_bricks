@@ -1,11 +1,10 @@
-name: riverpod_freezed_state
-description: A brick to create your riverpod state.
+name: riverpod_feature_brick
+description: A brick to create a riverpod feature.
 
 # The following defines the version and build number for your brick.
 # A version number is three numbers separated by dots, like 1.2.34
 # followed by an optional build number (separated by a +).
-version: 0.1.0+4
-repository: https://github.com/viralkachhadiya/mason_bricks/tree/main/bricks/riverpod_freezed_state
+version: 0.1.0+1
 
 # The following defines the environment for the current brick.
 # It includes the version of mason that the brick requires.
@@ -22,13 +21,8 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 vars:
-  state_name:
+  feature_name:
     type: string
-    description: The Name of State
     default: ToDo
-    prompt: What is the State name?
-  state_type:
-    type: string
-    description: The Type of State
-    default: ToDo
-    prompt: What is the State type?  
+    description: The feature name
+    prompt: What is the feature name?
