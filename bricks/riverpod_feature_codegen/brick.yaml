@@ -1,0 +1,37 @@
+name: riverpod_feature_codegen
+description: A Mason brick for creating Riverpod features with code generation
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev <0.2.0"
+
+vars:
+  feature_name:
+    type: string
+    description: The name of the feature
+    default: counter
+    prompt: What is the name of your feature?
+  
+  notifier_name:
+    type: string
+    description: The name of the notifier class
+    default: ""
+    prompt: What is the name of your notifier? (leave empty to use feature name)
+  
+  return_type:
+    type: string
+    description: The return type of the notifier state
+    default: "void"
+    prompt: What is the return type of your notifier state? (e.g., String, int, User, void)
+  
+  arguments:
+    type: string
+    description: Arguments for the notifier build method
+    default: ""
+    prompt: What arguments does your notifier need? (e.g., String id, int userId) (leave empty for no arguments)
+  
+  has_async:
+    type: boolean
+    description: Whether the notifier should be async
+    default: false
+    prompt: Should this be an async notifier?
