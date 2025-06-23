@@ -1,6 +1,6 @@
 {{#use_freezed}}import 'package:freezed_annotation/freezed_annotation.dart';
 
-part '{{feature_name_snake}}_events.freezed.dart';
+part '{{feature_name.snakeCase()}}_events.freezed.dart';
 
 @freezed
 class {{feature_name_pascal}}Event with _${{feature_name_pascal}}Event {

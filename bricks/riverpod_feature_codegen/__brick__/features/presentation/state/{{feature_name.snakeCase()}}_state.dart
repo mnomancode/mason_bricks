@@ -1,7 +1,7 @@
 {{#use_freezed}}import 'package:freezed_annotation/freezed_annotation.dart';
 
-part '{{feature_name_snake}}_state.freezed.dart';
-{{#has_async_state}}part '{{feature_name_snake}}_state.g.dart';{{/has_async_state}}
+part '{{feature_name.snakeCase()}}_state.freezed.dart';
+{{#has_async_state}}part '{{feature_name.snakeCase()}}_state.g.dart';{{/has_async_state}}
 
 @freezed
 class {{feature_name_pascal}}State with _${{feature_name_pascal}}State {

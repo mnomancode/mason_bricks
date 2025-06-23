@@ -1,11 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 {{#include_logger}}import 'package:logger/logger.dart';{{/include_logger}}
 
-import '{{feature_name_snake}}_state.dart';
-import '{{feature_name_snake}}_events.dart';
-{{#include_repository}}import '../data/{{feature_name_snake}}_repository.dart';{{/include_repository}}
+import '{{feature_name.snakeCase()}}_state.dart';
+import '{{feature_name.snakeCase()}}_events.dart';
+{{#include_repository}}import '../data/{{feature_name.snakeCase()}}_repository.dart';{{/include_repository}}
 
-part '{{feature_name_snake}}_notifier.g.dart';
+part '{{feature_name.snakeCase()}}_notifier.g.dart';
 
 @riverpod
 class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier {
@@ -90,7 +90,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
       final data = {{feature_name_pascal}}Data(
         id: '1',
         name: 'Sample {{feature_name_pascal}}',
-        description: 'This is a sample {{feature_name_snake}} data',
+        description: 'This is a sample {{feature_name.snakeCase()}} data',
         createdAt: DateTime.now(),
       );
 {{/include_repository}}
@@ -102,7 +102,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
 {{#include_error_handling}}
     } catch (error, stackTrace) {
 {{#include_logger}}
-      _logger.e('Error loading {{feature_name_snake}} data', error: error, stackTrace: stackTrace);
+      _logger.e('Error loading {{feature_name.snakeCase()}} data', error: error, stackTrace: stackTrace);
 {{/include_logger}}
       state = state.copyWith(
         isLoading: false,
@@ -144,7 +144,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
 {{#include_error_handling}}
     } catch (error, stackTrace) {
 {{#include_logger}}
-      _logger.e('Error creating {{feature_name_snake}} data', error: error, stackTrace: stackTrace);
+      _logger.e('Error creating {{feature_name.snakeCase()}} data', error: error, stackTrace: stackTrace);
 {{/include_logger}}
       state = state.copyWith(
         isLoading: false,
@@ -180,7 +180,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
 {{#include_error_handling}}
     } catch (error, stackTrace) {
 {{#include_logger}}
-      _logger.e('Error updating {{feature_name_snake}} data', error: error, stackTrace: stackTrace);
+      _logger.e('Error updating {{feature_name.snakeCase()}} data', error: error, stackTrace: stackTrace);
 {{/include_logger}}
       state = state.copyWith(
         isLoading: false,
@@ -212,7 +212,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
 {{#include_error_handling}}
     } catch (error, stackTrace) {
 {{#include_logger}}
-      _logger.e('Error deleting {{feature_name_snake}} data', error: error, stackTrace: stackTrace);
+      _logger.e('Error deleting {{feature_name.snakeCase()}} data', error: error, stackTrace: stackTrace);
 {{/include_logger}}
       state = state.copyWith(
         isLoading: false,
@@ -262,7 +262,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
 {{#include_error_handling}}
     } catch (error, stackTrace) {
 {{#include_logger}}
-      _logger.e('Error loading {{feature_name_snake}} items', error: error, stackTrace: stackTrace);
+      _logger.e('Error loading {{feature_name.snakeCase()}} items', error: error, stackTrace: stackTrace);
 {{/include_logger}}
       state = state.copyWith(
         isLoading: false,
@@ -303,7 +303,7 @@ class {{feature_name_pascal}}Notifier extends _${{feature_name_pascal}}Notifier 
 {{#include_error_handling}}
     } catch (error, stackTrace) {
 {{#include_logger}}
-      _logger.e('Error adding {{feature_name_snake}} item', error: error, stackTrace: stackTrace);
+      _logger.e('Error adding {{feature_name.snakeCase()}} item', error: error, stackTrace: stackTrace);
 {{/include_logger}}
       state = state.copyWith(
         isLoading: false,

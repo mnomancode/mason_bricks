@@ -3,9 +3,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 {{#has_async_state}}import 'dart:convert';
 import 'package:http/http.dart' as http;{{/has_async_state}}
 
-import '../presentation/state/{{feature_name_snake}}_state.dart';
+import '../presentation/state/{{feature_name.snakeCase()}}_state.dart';
 
-part '{{feature_name_snake}}_repository.g.dart';
+part '{{feature_name.snakeCase()}}_repository.g.dart';
 
 abstract class {{feature_name_pascal}}Repository {
 {{#state_type}}
@@ -49,12 +49,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<int> getValue() async {
 {{#include_logger}}
-    _logger.d('Getting {{feature_name_snake}} value');
+    _logger.d('Getting {{feature_name.snakeCase()}} value');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.get(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/value'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/value'),
       );
       
       if (response.statusCode == 200) {
@@ -65,7 +65,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error getting {{feature_name_snake}} value', error: e);
+      _logger.e('Error getting {{feature_name.snakeCase()}} value', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -80,12 +80,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<void> setValue(int value) async {
 {{#include_logger}}
-    _logger.d('Setting {{feature_name_snake}} value to $value');
+    _logger.d('Setting {{feature_name.snakeCase()}} value to $value');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.post(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/value'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/value'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'value': value}),
       );
@@ -95,7 +95,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error setting {{feature_name_snake}} value', error: e);
+      _logger.e('Error setting {{feature_name.snakeCase()}} value', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -109,7 +109,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<void> resetValue() async {
 {{#include_logger}}
-    _logger.d('Resetting {{feature_name_snake}} value');
+    _logger.d('Resetting {{feature_name.snakeCase()}} value');
 {{/include_logger}}
     await setValue(0);
   }
@@ -118,12 +118,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<{{feature_name_pascal}}Data?> load{{feature_name_pascal}}Data() async {
 {{#include_logger}}
-    _logger.d('Loading {{feature_name_snake}} data');
+    _logger.d('Loading {{feature_name.snakeCase()}} data');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.get(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}'),
       );
       
       if (response.statusCode == 200) {
@@ -136,7 +136,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error loading {{feature_name_snake}} data', error: e);
+      _logger.e('Error loading {{feature_name.snakeCase()}} data', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -147,7 +147,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
     return {{feature_name_pascal}}Data(
       id: '1',
       name: 'Sample {{feature_name_pascal}}',
-      description: 'This is a sample {{feature_name_snake}} data',
+      description: 'This is a sample {{feature_name.snakeCase()}} data',
       createdAt: DateTime.now(),
     );
 {{/has_async_state}}
@@ -156,12 +156,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<{{feature_name_pascal}}Data> create{{feature_name_pascal}}Data(String name, String? description) async {
 {{#include_logger}}
-    _logger.d('Creating {{feature_name_snake}} data: $name');
+    _logger.d('Creating {{feature_name.snakeCase()}} data: $name');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.post(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'name': name,
@@ -177,7 +177,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error creating {{feature_name_snake}} data', error: e);
+      _logger.e('Error creating {{feature_name.snakeCase()}} data', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -197,12 +197,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<{{feature_name_pascal}}Data> update{{feature_name_pascal}}Data(String id, String name, String? description) async {
 {{#include_logger}}
-    _logger.d('Updating {{feature_name_snake}} data: $id');
+    _logger.d('Updating {{feature_name.snakeCase()}} data: $id');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.put(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/$id'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/$id'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'name': name,
@@ -218,7 +218,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error updating {{feature_name_snake}} data', error: e);
+      _logger.e('Error updating {{feature_name.snakeCase()}} data', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -238,12 +238,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<void> delete{{feature_name_pascal}}Data(String id) async {
 {{#include_logger}}
-    _logger.d('Deleting {{feature_name_snake}} data: $id');
+    _logger.d('Deleting {{feature_name.snakeCase()}} data: $id');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.delete(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/$id'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/$id'),
       );
       
       if (response.statusCode != 204) {
@@ -251,7 +251,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error deleting {{feature_name_snake}} data', error: e);
+      _logger.e('Error deleting {{feature_name.snakeCase()}} data', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -266,12 +266,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<List<{{feature_name_pascal}}Item>> load{{feature_name_pascal}}Items() async {
 {{#include_logger}}
-    _logger.d('Loading {{feature_name_snake}} items');
+    _logger.d('Loading {{feature_name.snakeCase()}} items');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.get(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/items'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/items'),
       );
       
       if (response.statusCode == 200) {
@@ -282,7 +282,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error loading {{feature_name_snake}} items', error: e);
+      _logger.e('Error loading {{feature_name.snakeCase()}} items', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -309,12 +309,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<{{feature_name_pascal}}Item> add{{feature_name_pascal}}Item(String title, String? subtitle) async {
 {{#include_logger}}
-    _logger.d('Adding {{feature_name_snake}} item: $title');
+    _logger.d('Adding {{feature_name.snakeCase()}} item: $title');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.post(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/items'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/items'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'title': title,
@@ -330,7 +330,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error adding {{feature_name_snake}} item', error: e);
+      _logger.e('Error adding {{feature_name.snakeCase()}} item', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -349,7 +349,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<void> update{{feature_name_pascal}}Item(String id, String? title, String? subtitle, bool? isCompleted) async {
 {{#include_logger}}
-    _logger.d('Updating {{feature_name_snake}} item: $id');
+    _logger.d('Updating {{feature_name.snakeCase()}} item: $id');
 {{/include_logger}}
 {{#has_async_state}}
     try {
@@ -359,7 +359,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       if (isCompleted != null) updateData['isCompleted'] = isCompleted;
 
       final response = await _httpClient.patch(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/items/$id'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/items/$id'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode(updateData),
       );
@@ -369,7 +369,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error updating {{feature_name_snake}} item', error: e);
+      _logger.e('Error updating {{feature_name.snakeCase()}} item', error: e);
 {{/include_logger}}
       rethrow;
     }
@@ -383,12 +383,12 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
   @override
   Future<void> delete{{feature_name_pascal}}Item(String id) async {
 {{#include_logger}}
-    _logger.d('Deleting {{feature_name_snake}} item: $id');
+    _logger.d('Deleting {{feature_name.snakeCase()}} item: $id');
 {{/include_logger}}
 {{#has_async_state}}
     try {
       final response = await _httpClient.delete(
-        Uri.parse('$_baseUrl/{{feature_name_snake}}/items/$id'),
+        Uri.parse('$_baseUrl/{{feature_name.snakeCase()}}/items/$id'),
       );
       
       if (response.statusCode != 204) {
@@ -396,7 +396,7 @@ class {{feature_name_pascal}}RepositoryImpl implements {{feature_name_pascal}}Re
       }
     } catch (e) {
 {{#include_logger}}
-      _logger.e('Error deleting {{feature_name_snake}} item', error: e);
+      _logger.e('Error deleting {{feature_name.snakeCase()}} item', error: e);
 {{/include_logger}}
       rethrow;
     }

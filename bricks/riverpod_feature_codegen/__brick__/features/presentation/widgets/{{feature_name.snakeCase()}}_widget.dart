@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../state/{{feature_name_snake}}_state.dart';
-import '../events/{{feature_name_snake}}_events.dart';
+import '../state/{{feature_name.snakeCase()}}_state.dart';
+import '../events/{{feature_name.snakeCase()}}_events.dart';
 
 class {{feature_name_pascal}}Widget extends StatelessWidget {
   final {{feature_name_pascal}}State state;

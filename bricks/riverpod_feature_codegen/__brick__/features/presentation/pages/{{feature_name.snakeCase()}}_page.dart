@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../notifiers/{{feature_name_snake}}_notifier.dart';
-import '../widgets/{{feature_name_snake}}_widget.dart';
-import '../events/{{feature_name_snake}}_events.dart';
+import '../notifiers/{{feature_name.snakeCase()}}_notifier.dart';
+import '../widgets/{{feature_name.snakeCase()}}_widget.dart';
+import '../events/{{feature_name.snakeCase()}}_events.dart';
 
 class {{feature_name_pascal}}Page extends ConsumerWidget {
   const {{feature_name_pascal}}Page({super.key});
