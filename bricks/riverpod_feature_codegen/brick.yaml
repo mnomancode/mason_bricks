@@ -1,37 +1,58 @@
-name: riverpod_feature_codegen
-description: A Mason brick for creating Riverpod features with code generation
+name: riverpod_feature
+description: A comprehensive Riverpod feature generator with codegen support
 version: 0.1.0+1
 
 environment:
-  mason: ">=0.1.0-dev <0.2.0"
+  mason: ^0.1.0
 
 vars:
   feature_name:
     type: string
-    description: The name of the feature
-    default: counter
+    description: The name of the feature (e.g., auth, profile, counter)
     prompt: What is the name of your feature?
   
-  notifier_name:
+  feature_description:
     type: string
-    description: The name of the notifier class
-    default: ""
-    prompt: What is the name of your notifier? (leave empty to use feature name)
+    description: A brief description of what this feature does
+    prompt: What does this feature do?
+    default: "A new feature"
   
-  return_type:
-    type: string
-    description: The return type of the notifier state
-    default: "void"
-    prompt: What is the return type of your notifier state? (e.g., String, int, User, void)
-  
-  arguments:
-    type: string
-    description: Arguments for the notifier build method
-    default: ""
-    prompt: What arguments does your notifier need? (e.g., String id, int userId) (leave empty for no arguments)
-  
-  has_async:
+  has_async_state:
     type: boolean
-    description: Whether the notifier should be async
+    description: Whether the state should handle async operations
+    prompt: Does this feature need async state management?
+    default: true
+  
+  use_freezed:
+    type: boolean
+    description: Use Freezed for immutable classes
+    prompt: Do you want to use Freezed for immutable classes?
+    default: true
+  
+  include_repository:
+    type: boolean
+    description: Include repository pattern for data layer
+    prompt: Do you want to include a repository pattern?
+    default: true
+  
+  state_type:
+    type: enum
+    description: The type of state to generate
+    prompt: What type of state do you need?
+    default: custom
+    values:
+      - simple
+      - custom
+      - list
+  
+  include_error_handling:
+    type: boolean
+    description: Include comprehensive error handling
+    prompt: Do you want comprehensive error handling?
+    default: true
+  
+  include_logger:
+    type: boolean
+    description: Include logger integration
+    prompt: Do you want logger integration?
     default: false
-    prompt: Should this be an async notifier?
